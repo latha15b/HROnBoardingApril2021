@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="top-right text-dark">
+      <label class="p-2 m-2"  *ngIf ="isValidUser">Passcode</label>
+      <input class="m-2" type="password" [(ngModel)]="otp" id="pwd" name="pwd" *ngIf ="isValidUser">
+      <button class="btn btn-sm btn-primary m-1" (click)="loginForm()"  *ngIf ="isValidUser"> Submit </button>
+      <!-- routerLink="/form/createpersonaldetails" -->
+      <!-- <button class="btn btn-sm btn-primary m-1" (click)="loginForm()" routerLink="/form/educationdetails"> Submit </button> -->
+    <div>
+      <label class="p-2 m-2 " *ngIf ="!isValidPasscode">Not Valid Passcode?</label>
+      <label class="p-2 m-2 bluebold" *ngIf ="!isValidPasscode">Please Contact HR</label>
+    </div>
+    </div>
+    <div class="top-right text-dark">
+     <div>
+       <label class="p-2 m-2 " *ngIf ="!isValidUser">TimeOut !! Kinldy Generate Passcode</label>
+    </div> 
+      <label class="p-2 m-2"*ngIf ="!isValidUser">EmailId</label>
+      <input class="m-2" type="email" [(ngModel)]="emailId" id="email" name="email" *ngIf ="!isValidUser">
+      <button class="btn btn-sm btn-primary m-1" *ngIf ="!isValidUser" (click)="generatePassCode()" > Generate PassCode </button>
+      <!-- <label class="p-2 m-2"*ngIf ="isValidEmail">Please Enter Email ID</label> -->
+    
+    </div>
+    <img [src]="myImage1" alt="image" width="100%">
+</div>

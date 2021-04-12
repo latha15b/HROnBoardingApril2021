@@ -1,0 +1,126 @@
+<p>
+    <mat-toolbar color="primary" style="min-height: 30px !important; height: 30px !important;">
+      <button mat-icon-button class="example-icon" style="min-height: 30px !important; height: 30px !important;" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="p-2">Skills Summary</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon d-none" *ngIf = "!isSummaryPage" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon d-none" *ngIf = "!isSummaryPage" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar>
+  </p>
+
+<form novalidate #form="ngForm" class="mb-3" (ngSubmit)="submitForm(form)" (reset)="resetForm()">
+     <div class="container-fluid">
+        <div class="form-row col-10">
+            <div class="form-group col-3 px-0">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Primary Skills</mat-label>
+                    <input matInput type="text" name="primarySkills" [(ngModel)]="otherProfessionalDetails.primarySkills" required>
+                    <!-- <button mat-button *ngIf="groupMedical.parentOrInLawsName1" matSuffix mat-icon-button aria-label="Clear" (click)="groupMedical.parentOrInLawsName1=''">
+                      <mat-icon color="primary" [inline]="true">close</mat-icon>
+                    </button> -->
+                </mat-form-field>
+            </div>
+            
+            <div class="form-group col-3 px-0">
+                <mat-form-field>
+                    <mat-label>Select Primary Skill Level</mat-label>
+                    <select matNativeControl [(ngModel)]="otherProfessionalDetails.primarySkillsLevel" name="primarySkillsLevel"  required>
+                        <option *ngFor="let level of ratingLevels" [ngValue]="level.ratingLevelId">
+                            {{level.ratingLevelDescription}}
+                        </option>
+                    </select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row col-10">
+            <div class="form-group col-3 px-0">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Secondary Skills</mat-label>
+                    <input matInput type="text" name="secondarySkills" [(ngModel)]="otherProfessionalDetails.secondarySkills">
+                    <!-- <button mat-button *ngIf="groupMedical.parentOrInLawsName1" matSuffix mat-icon-button aria-label="Clear" (click)="groupMedical.parentOrInLawsName1=''">
+                      <mat-icon color="primary" [inline]="true">close</mat-icon>
+                    </button> -->
+                </mat-form-field>
+            </div>
+            
+            <div class="form-group col-3 px-0">
+                <mat-form-field>
+                    <mat-label>Select Secondary Skill Level</mat-label>
+                    <select matNativeControl [(ngModel)]="otherProfessionalDetails.secondarySkillLevel" name="secondarySkillLevel">
+                        <option *ngFor="let level of ratingLevels" [ngValue]="level.ratingLevelId">
+                            {{level.ratingLevelDescription}}
+                        </option>
+                    </select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <mat-toolbar style="min-height: 30px !important; height: 30px !important;" class="px-0">
+            <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+              <mat-icon>menu</mat-icon>
+            </button> -->
+            <span class="p-2">Soft Skills</span>
+          </mat-toolbar>
+          <span class="p-2"></span>
+
+        <div class="form-row col-11"> 
+            <div class="form-group col-3 px-0">
+                <mat-form-field>
+                    <mat-label>Verbal Communication</mat-label>
+                    <select matNativeControl [(ngModel)]="otherProfessionalDetails.verbalCommunicationLevel" name="verbalCommunicationLevel"  required>
+                        <option *ngFor="let level of ratingLevels" [ngValue]="level.ratingLevelId">
+                            {{level.ratingLevelDescription}}
+                        </option>
+                    </select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-3 px-0">
+                <mat-form-field>
+                    <mat-label>Written Communication</mat-label>
+                    <select matNativeControl [(ngModel)]="otherProfessionalDetails.writtenCommunicationLevel" name="writtenCommunicationLevel"  required>
+                        <option *ngFor="let level of ratingLevels" [ngValue]="level.ratingLevelId">
+                            {{level.ratingLevelDescription}}
+                        </option>
+                    </select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-3">
+                <mat-form-field>
+                    <mat-label>Presentatiion Skills</mat-label>
+                    <select matNativeControl [(ngModel)]="otherProfessionalDetails.presentationSkillsLevel" name="presentationSkillsLevel"  required>
+                        <option *ngFor="let level of ratingLevels" [ngValue]="level.ratingLevelId">
+                            {{level.ratingLevelDescription}}
+                        </option>
+                    </select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-3 px-0">
+                <mat-form-field>
+                    <mat-label>Customer Inferfacing</mat-label>
+                    <select matNativeControl [(ngModel)]="otherProfessionalDetails.customerInterfactingLevel" name="customerInterfactingLevel"  required>
+                        <option *ngFor="let level of ratingLevels" [ngValue]="level.ratingLevelId">
+                            {{level.ratingLevelDescription}}
+                        </option>
+                    </select>
+                </mat-form-field>
+            </div>
+        </div>
+    
+</div>
+<div class="form-row col-11" *ngIf = "!isSummaryPage"> 
+    <div class="form-group col-11 px-0">
+        <button type="button" class="btn btn-secondary m-1 btn-success" [class.btn-warning]="editing" (click)="getOtherDetailsOPD()">Previous</button>
+        <button type="submit" class="btn btn-success m-1"  style="float: right;"
+        [disabled]="form.invalid"> {{editing ? "Next" : "Next"}} 
+        </button> 
+    </div>
+    <div class="form-group col-3">
+    </div>  
+</div> 
+</form>

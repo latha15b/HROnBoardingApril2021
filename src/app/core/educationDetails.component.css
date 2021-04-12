@@ -1,0 +1,23 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }  
+  
+.transparentButton{
+  background: transparent;
+  border: none;
+  font-size: .9rem;
+}
+
+button.transparentButton:focus{
+  border: none !important;
+  outline: none;
+}
+
+.addIcon{
+  font-size: .9rem;;
+}
+
+.deleteAnchor{
+  margin-top: 18px;
+  text-decoration: underline;
+}

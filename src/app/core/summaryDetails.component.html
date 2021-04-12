@@ -1,0 +1,43 @@
+<p>
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="p-2">Declaration</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" class="m-2">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar>
+  </p>
+<form novalidate #form="ngForm" class="mb-3" (ngSubmit)="submitForm(form)" (reset)="resetForm()">
+     <div class="container-fluid">
+        <div class="form-row col-10">
+          <div class="form-row col-11"> 
+            <mat-label class="example-margin" name="thankLabel">
+                All the Document and Details are Submitted, Thanks You
+            </mat-label>>
+             
+          </div>
+        </div>
+        <div class="form-row col-11"> 
+          <div class="form-group col-3">
+              <!-- <button type="button" class="btn btn-secondary m-1 btn-success" [class.btn-warning]="editing" (click)="getOtherDetailsSummary()">Previous</button> -->
+              <button type="submit" class="btn btn-success m-1"
+              [disabled]="form.invalid"> Exit
+              </button> 
+          </div>
+      </div> 
+</div>
+  <!-- <pdForm>  </pdForm>
+  <edForm>  </edForm>
+  <peForm>  </peForm>
+  <gmForm>  </gmForm>
+  <odForm>  </odForm>
+  <opdForm> </opdForm>
+  <udForm>  </udForm> -->
+
+</form>

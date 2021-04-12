@@ -1,0 +1,73 @@
+<p>
+  <mat-toolbar color="primary" style="min-height: 30px !important; height: 30px !important;">
+    <span class="p-2"> Professional Certification</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+</p>
+<form novalidate #formEC="ngForm" class="mb-3" (ngSubmit)="submitForm(formEC)" (reset)="resetForm()">
+  <div class="container-fluid">
+   
+  <div class="row" *ngFor="let controlec Of controlsEC.controlDetailsEC;let indEC = index">
+    <div class="form-row col-10">
+      <div class="form-group col-3">
+        <mat-form-field class="example-form-field">
+            <mat-label>Professional Certification</mat-label>
+            <input matInput type="text" name="nameOfCertifcation_{{controlec.educationCertificationId}}" [(ngModel)]="controlec.nameOfCertifcation" >
+            <!-- <button mat-button *ngIf="controlDetailsEC.nameOfCertifcation" matSuffix mat-icon-button aria-label="Clear" (click)="controlDetailsEC.nameOfCertifcation=''">
+              <mat-icon color="primary" [inline]="true">close</mat-icon>
+            </button> -->
+        </mat-form-field>
+    </div>
+    <div class="form-group col-3">
+      <mat-form-field class="example-form-field">
+        <mat-label>Year of Passing</mat-label>
+        <input  type="text" matInput #input 
+        name="year_{{controlec.educationCertificationId}}" 
+        [(ngModel)]="controlec.year" numbersOnly  minlength="4" maxlength="4" >
+        <!-- <button mat-button *ngIf="controlDetailsEC.year" matSuffix mat-icon-button aria-label="Clear" (click)="controlDetailsEC.year=''">
+          <mat-icon color="primary" [inline]="true">close</mat-icon>
+        </button> -->
+    </mat-form-field>
+    </div>
+      <div class="form-group col-3">
+          <mat-form-field class="example-form-field">
+              <mat-label>Certification Number</mat-label>
+              <input matInput type="text" name="certificateNumber_{{controlec.educationCertificationId}}" [(ngModel)]="controlec.certificateNumber" >
+              <!-- <button mat-button *ngIf="controlDetailsEC.certificateNumber" matSuffix mat-icon-button aria-label="Clear" (click)="controlDetailsEC.certificateNumber=''">
+                <mat-icon color="primary" [inline]="true">close</mat-icon>
+              </button> -->
+          </mat-form-field>
+      </div>
+      <div class="form-group col-3">
+        <!-- class="example-full-width" appearance="fill" -->
+        <mat-form-field>
+          <mat-label>Valid Till</mat-label>
+          <input matInput [matDatepicker]="picker" name="expiryDateOfCertificate_{{controlec.educationCertificationId}}"  [(ngModel)]="controlec.expiryDateOfCertificate" >
+          <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-group col-1">
+      <!-- <button mat-button aria-label="Example icon button" *ngIf = "indEC > 0" (click)="deleteControlsEC(controlec)">Delete</button> -->
+      <a type="button" (click)="deleteControlsEC(controlec)"  *ngIf = "indEC > 0" class="deleteAnchor">Delete</a>
+    </div>
+  </div>
+  <div class="form-row col-11 px-0" *ngIf = "count < 3" [disabled]="!formEC.valid"> 
+      <button mat-button  *ngIf = "!editing"  (click)="addControlsEC(formEC)" class="transparentButton"><mat-icon class="addIcon">add_circle_outline</mat-icon>Add</button>
+      <!-- <button mat-button aria-label="Example icon button" (click)="addControlsEC(formEC)">+ Additional Certifications </button> -->
+  </div>
+  <div class="form-row col-11 px-0"> 
+    <div class="form-group col-11 px-0">
+      <button type="button" class="btn btn-success m-1" [class.btn-warning]="editing" (click)="getPersonalDetailsEC()">Previous</button>
+        <button type="submit" class="btn btn-success m-1" style="float: right;"  
+        [disabled]="!isParentValid"> {{editing ? "Next" : "Next"}} 
+        </button> 
+    </div>
+    <div class="form-group col-3">
+    </div>    
+</div>
+  </div>
+</form>

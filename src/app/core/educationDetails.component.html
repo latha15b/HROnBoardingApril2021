@@ -1,0 +1,100 @@
+<p>
+    <mat-toolbar color="primary" style="min-height: 30px !important; height: 30px !important;" *ngIf = "!isSummaryPage">
+      <button mat-icon-button class="example-icon" style="min-height: 30px !important; height: 30px !important;" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="p-2">Education Details</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon d-none" *ngIf = "!isSummaryPage" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon d-none" *ngIf = "!isSummaryPage" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar>
+  </p>
+
+  <form novalidate #form="ngForm" class="mb-3" (ngSubmit)="submitForm(form)" (reset)="resetForm()">
+    <div class="container-fluid">
+     
+    <div class="row" *ngFor="let control Of controls.controlDetails;let ind = index">
+      <div class="form-row col-10">
+        <div class="form-group col-3">
+          <mat-form-field class="example-form-field">
+              <mat-label *ngIf="ind == 0">Higest Qualification</mat-label>
+              <mat-label *ngIf="ind != 0">Qualification</mat-label>
+              <input matInput type="text" name="qualification_{{control.educationQualificationId}}" [(ngModel)]="control.qualification" required>
+              <!-- <button mat-button *ngIf="controlDetails.qualification" matSuffix mat-icon-button aria-label="Clear" (click)="controlDetails.qualification=''">
+                <mat-icon color="primary" [inline]="true">close</mat-icon>
+              </button> -->
+          </mat-form-field>
+      </div>
+      <div class="form-group col-3">
+        <mat-form-field class="example-form-field">
+          <mat-label>Year Of Passing</mat-label>
+          <input matInput type="text" numbersOnly  name="yearOfPassing_{{control.educationQualificationId}}" [(ngModel)]="control.yearOfPassing" required minlength="4" maxlength="4">
+          <!-- <button mat-button *ngIf="controlDetails.yearOfPassing" matSuffix mat-icon-button aria-label="Clear" (click)="controlDetails.yearOfPassing=''">
+            <mat-icon color="primary" [inline]="true">close</mat-icon>
+          </button> -->
+      </mat-form-field>
+        <!-- <mat-form-field class="example-full-width" appearance="fill"> --> 
+          <!-- <input matInput [matDatepicker]="picker" name="yearOfPassing_{{control.educationQualificationId}}" [max]="getToday()" [(ngModel)]="control.yearOfPassing" required> -->
+          <!-- <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker startView="multi-year"></mat-datepicker> -->
+        <!-- </mat-form-field> -->
+      </div>
+        <div class="form-group col-3">
+            <mat-form-field class="example-form-field">
+                <mat-label>University Name</mat-label>
+                <input matInput type="text" name="nameOfUniversity_{{control.educationQualificationId}}" [(ngModel)]="control.nameOfUniversity" required>
+                <!-- <button mat-button *ngIf="controlDetails.nameOfUniversity" matSuffix mat-icon-button aria-label="Clear" (click)="controlDetails.nameOfUniversity=''">
+                  <mat-icon color="primary" [inline]="true">close</mat-icon>
+                </button> -->
+            </mat-form-field>
+        </div>
+        <div class="form-group col-3">
+            <mat-form-field class="form-group">
+                <mat-label >Specialization</mat-label>
+                <input matInput type="text" name="specialization_{{control.educationQualificationId}}" [(ngModel)]="control.specialization" required>
+                <!-- <button mat-button *ngIf="controlDetails.specialization" matSuffix mat-icon-button aria-label="Clear" (click)="controlDetails.specialization=''">
+                  <mat-icon color="primary" [inline]="true">close</mat-icon>
+                </button> -->
+            </mat-form-field>
+        </div>
+       
+      </div>
+      <div class="form-group col-1">
+        <!-- <a type="button" aria-label="Example icon button" *ngIf = "ind > 0 && !editing" (click)="deleteControls(control)" class="deleteAnchor">Delete</a> -->
+        <a type="button" (click)="deleteControls(control)"   *ngIf = "ind > 0 && !editing" class="deleteAnchor">Delete</a>
+      </div>
+      
+      <!-- <div class="form-row col-11"> 
+      <div class="form-group col-5">
+          <mat-checkbox class="example-margin" [disabled]="isHighestQualification(control.isHighestQualification)"
+          name="isHigh_{{control.educationQualificationId}}" [(ngModel)]="control.isHighestQualification">Checked</mat-checkbox>
+        </div>
+      </div> -->
+    </div>
+    <div class="form-row col-10 px-0" *ngIf = "count < 3 && !isSummaryPage"> 
+      <div class="form-group col-3 px-0">
+        <!-- <button mat-button aria-label="Example icon button with a plus one icon"  (click)="addControls(form)">
+          + Additional Qualifications
+        </button> -->
+        
+        <button type="button" (click)="addControls(form)" *ngIf = "!editing" class="transparentButton"><mat-icon class="addIcon">add_circle_outline</mat-icon>Add</button>
+      </div> 
+    </div>
+
+      <!-- <div class="form-group col-3">
+          <button type="submit" class="btn btn-success m-1" [class.btn-warning]="editing" 
+          [disabled]="form.invalid"> {{editing ? "Save" : "Next"}} 
+          </button> 
+      </div> -->
+    </div>
+  </form>
+
+  <edCerForm (submitEducationDetails) = "submitFormED()" [isParentValid] = "form.valid">
+    
+  </edCerForm>

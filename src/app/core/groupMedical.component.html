@@ -1,0 +1,217 @@
+<p>
+    <mat-toolbar color="primary" style="min-height: 30px !important; height: 30px !important;">
+      <button mat-icon-button class="example-icon" style="min-height: 30px !important; height: 30px !important;" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="p-2">Group Medical Insurance</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon d-none" *ngIf = "!isSummaryPage" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon d-none" *ngIf = "!isSummaryPage" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar>
+  </p>
+
+<form novalidate #form="ngForm" class="mb-3" (ngSubmit)="submitForm(form)" (reset)="resetForm()">
+     <div class="container-fluid">
+        <span class="form-row text-danger" *ngIf = "!editing" > Please select one set of parents (either your parents or your patent’s -in- law). </span>
+        <div class="form-row col-10">
+            <div class="form-group col-3 px-0">
+                <mat-form-field class="example-form-field">
+                    <mat-label *ngIf = "!editing" >Parent/In-Law Name</mat-label>
+                    <input matInput type="text" name="parentOrInLawsName1" [(ngModel)]="groupMedical.parentOrInLawsName1" required>
+                    <!-- <button mat-button *ngIf="groupMedical.parentOrInLawsName1" matSuffix mat-icon-button aria-label="Clear" (click)="groupMedical.parentOrInLawsName1=''">
+                      <mat-icon color="primary" [inline]="true">close</mat-icon>
+                    </button> -->
+                </mat-form-field>
+            </div>
+            <div class="form-group col-3 px-0">
+                <mat-form-field>
+                    <mat-label *ngIf = "!editing" >Relationship</mat-label>
+                    <select matNativeControl [(ngModel)]="groupMedical.parentOrInLawsName1Relationship" name="parentOrInLawsName1Relationship"  required>
+                        <option *ngFor="let relation of relationShips" [ngValue]="relation.relationshipType">
+                            {{relation.relationshipType}}
+                        </option>
+                    </select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row col-10">
+            <div class="form-group col-3 px-0">
+                <mat-form-field class="example-form-field">
+                    <mat-label *ngIf = "!editing" >Parent/In-Law Name</mat-label>
+                    <input matInput type="text" name="parentOrInLawsName2" [(ngModel)]="groupMedical.parentOrInLawsName2" required>
+                    <!-- <button mat-button *ngIf="groupMedical.parentOrInLawsName2" matSuffix mat-icon-button aria-label="Clear" (click)="groupMedical.parentOrInLawsName2=''">
+                      <mat-icon color="primary" [inline]="true">close</mat-icon>
+                    </button> -->
+                </mat-form-field>
+            </div>
+            <div class="form-group col-3 px-0">
+                <mat-form-field>
+                    <mat-label *ngIf = "!editing">Relationship</mat-label>
+                    <select matNativeControl [(ngModel)]="groupMedical.parentOrInLawsName2Relationship" name="parentOrInLawsName2Relationship"  required>
+                        <option *ngFor="let relation of relationShips" [ngValue]="relation.relationshipType">
+                            {{relation.relationshipType}}
+                        </option>
+                    </select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="form-row col-11"> 
+            <div class="form-group col-5 px-0">
+                <mat-radio-group aria-label="Select an option"  name="married" [(ngModel)]="groupMedical.married" required>
+                    <mat-radio-button  [value] ="true">Married</mat-radio-button>
+                    <mat-radio-button class="m-1" [value] = "false">Unmarried</mat-radio-button>
+                    <mat-radio-button class="m-1" [value] = "">Sperated(Do not wish to disclose)</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+        <div class="form-row col-11" *ngIf = "groupMedical.married">    
+            <div class="form-group col-3 px-0">
+                <mat-form-field>
+                    <mat-label>Date Of Marriage</mat-label>
+                    <input matInput [matDatepicker]="picker" name="dateOfMarriage" [max]="getToday()" [(ngModel)]="groupMedical.dateOfMarriage" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker">
+                    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-6 px-0">
+                <mat-form-field>
+                    <mat-label>Spouse Name</mat-label>
+                    <input matInput  type="text" name="spouseName" #spouseName="ngModel" [(ngModel)]="groupMedical.spouseName" required >
+                    <!-- <button mat-button *ngIf="groupMedical.spouseName" matSuffix mat-icon-button aria-label="Clear" (click)="groupMedical.spouseName=''">
+                    <mat-icon color="primary" [inline]="true">close</mat-icon>
+                    </button> -->
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="form-row col-11" *ngIf = "groupMedical.married">    
+        <div class="form-group col-3 px-0">
+            <mat-form-field class="example-full-width" appearance="">
+                <mat-label>Spouse Date Of Birth</mat-label>
+                <input matInput [matDatepicker]="pickersdob" name="spouseDateOfBirth" [max]="getToday()" [(ngModel)]="groupMedical.spouseDateOfBirth" required>
+                <mat-datepicker-toggle matSuffix [for]="pickersdob">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #pickersdob></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="form-group col-3 px-0">
+            <mat-form-field>
+                <mat-label>Spouse Gender</mat-label>
+                <select matNativeControl [(ngModel)]="groupMedical.spouseGender" name="spouseGender" required>
+                    <option *ngFor="let gen of gender" [ngValue]="gen.genderType">
+                    {{gen.genderType}}
+                </option>  
+                </select>                   
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="form-row col-11" *ngIf = "groupMedical.married"> 
+        <div class="form-group col-5">
+            <mat-checkbox class="example-margin" [color]="task.color"
+                name="doYouHaveKids" [(ngModel)]="groupMedical.doYouHaveKids">
+                Kids
+            </mat-checkbox>
+        </div>
+    </div>
+    <div class="form-row col-11" *ngIf ="groupMedical.doYouHaveKids" >
+        <div class="form-group col-3 px-0">
+            <mat-form-field class="example-form-field">
+                <mat-label>Kid1 Name</mat-label>
+                <input matInput  type="text" name="kidName_0"  [(ngModel)]="groupMedical.kids[0].kidName" required >
+                <!-- <button mat-button *ngIf="groupMedical.kids[0].kidName" matSuffix mat-icon-button aria-label="Clear" (click)="groupMedical.kids[0].kidName=''">
+                  <mat-icon color="primary" [inline]="true">close</mat-icon>
+                </button> -->
+            </mat-form-field>
+        </div>
+        <!-- <div class="form-group col-3">
+            <mat-form-field>
+                <mat-label>Select Kid Relationship</mat-label>
+                <select matNativeControl [(ngModel)]="groupMedical.kids[0].kidRelationship" name="kidRelationship0"  required>
+                    <option *ngFor="let relation of relationShips" [ngValue]="relation.relationshipType">
+                        {{relation.relationshipType}}
+                    </option>
+                </select>
+            </mat-form-field>
+        </div> -->
+        <div class="form-group col-3 px-0">
+            <mat-form-field class="example-full-width" appearance="">
+                <mat-label>Kid 1 Date Of Birth</mat-label>
+                <input matInput [matDatepicker]="pickerk0dob" name="kidDateOfBirth0" [max]="getToday()" [(ngModel)]="groupMedical.kids[0].kidDateOfBirth" required>
+                <mat-datepicker-toggle matSuffix [for]="pickerk0dob">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #pickerk0dob></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="form-group col-3 px-0">
+            <mat-form-field>
+                <mat-label>Select Gender</mat-label>
+                <select matNativeControl [(ngModel)]="groupMedical.kids[0].kidGender" name="kidGender0" required>
+                    <option *ngFor="let gen of gender" [ngValue]="gen.genderType">
+                    {{gen.genderType}}
+                </option>  
+                </select>                   
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="form-row col-11" *ngIf ="groupMedical.doYouHaveKids">
+        <div class="form-group col-3 px-0">
+            <mat-form-field class="example-form-field">
+                <mat-label>Kid2 Name</mat-label>
+                <input matInput  type="text" name="kidName1" #kidName1="ngModel" [(ngModel)]="groupMedical.kids[1].kidName">
+                <!-- <button mat-button *ngIf="groupMedical.kids[1].kidName" matSuffix mat-icon-button aria-label="Clear" (click)="groupMedical.kids[1].kidName=''">
+                  <mat-icon color="primary" [inline]="true">close</mat-icon>
+                </button> -->
+            </mat-form-field>
+        </div>
+        <!-- <div class="form-group col-3">
+            <mat-form-field>
+                <mat-label>Select Kid Relationship</mat-label>
+                <select matNativeControl [(ngModel)]="groupMedical.kids[1].kidRelationship" name="kidRelationship1"  required>
+                    <option *ngFor="let relation of relationShips" [ngValue]="relation.relationshipType">
+                        {{relation.relationshipType}}
+                    </option>
+                </select>
+            </mat-form-field>
+        </div> -->
+        <div class="form-group col-3 px-0">
+            <mat-form-field class="example-full-width" appearance="">
+                <mat-label>Kid 2 Date Of Birth</mat-label>
+                <input matInput [matDatepicker]="pickerk1dob" name="kidDateOfBirth1" [max]="getToday()" [(ngModel)]="groupMedical.kids[1].kidDateOfBirth">
+                <mat-datepicker-toggle matSuffix [for]="pickerk1dob">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #pickerk1dob></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="form-group col-3 px-0">
+            <mat-form-field>
+                <mat-label>Select Gender</mat-label>
+                <select matNativeControl [(ngModel)]="groupMedical.kids[1].kidGender" name="kidgender1">
+                    <option *ngFor="let gen of gender" [ngValue]="gen.genderType">
+                    {{gen.genderType}}
+                </option>  
+                </select>                   
+            </mat-form-field>
+        </div>
+    </div>
+</div>
+<div class="form-row col-11" *ngIf = "!isSummaryPage"> 
+    <div class="form-group col-11 px-0">
+        <button type="button" class="btn btn-secondary m-1 btn-success" [class.btn-warning]="editing" (click)="getPersonalDetailsGM()">Previous</button>
+        <button type="submit" class="btn btn-success m-1" style="float: right;" 
+        [disabled]="form.invalid"> {{editing ? "Next" : "Next"}} 
+        </button> 
+    </div>
+    <div class="form-group col-3">
+    </div>  
+</div> 
+</form>
