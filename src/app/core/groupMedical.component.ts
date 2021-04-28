@@ -97,20 +97,29 @@ export class GroupMedicalComponent
                     if(data.groupMedicalCoverGroupMedicalId != null)
                     {
                         this.groupMedical = this.model.getGroupMedicalById(data.groupMedicalCoverGroupMedicalId);
-                        console.log(this.groupMedical.doYouHaveKids);
+                        console.log(this.groupMedical.married);
                         if(this.groupMedical.doYouHaveKids)
                         {
                             this.kidModel.getKidByGroupMedicalId(data.groupMedicalCoverGroupMedicalId).subscribe
                             (datakid => {
                                 if(datakid)
                                 {
+                                    this.groupMedical.kids = [new Kid(),new Kid()]
+                                    if(datakid.length==1)
+                                    this.groupMedical.kids[0]= datakid[0];
+                                    else
                                     this.groupMedical.kids= datakid;
+
+                                }
+                                else
+                                {
+                                    this.groupMedical.kids = [new Kid(),new Kid()]
                                 }
                             });
                         }
                         else
                         {
-                            this.groupMedical.kids= new Array<Kid>();
+                            this.groupMedical.kids= [new Kid(),new Kid()]
                         }
                         // if(this.groupMedical.kids.length > 0)
                         // {
@@ -166,14 +175,30 @@ export class GroupMedicalComponent
 
             if(!this.groupMedical.married)
             {
-                this.groupMedical.dateOfMarriage =  new Date();
-                this.groupMedical.spouseDateOfBirth=  new Date();
-                this.groupMedical.spouseName="";
-                this.groupMedical.spouseGender="";
+                // this.groupMedical.dateOfMarriage =  new Date();
+                // this.groupMedical.spouseDateOfBirth=  new Date();
+                // this.groupMedical.spouseName="";
+                // this.groupMedical.spouseGender="";
             }
             if(!this.groupMedical.doYouHaveKids)
             {
+                console.log(this.kids.length);
                 this.groupMedical.kids = this.kids;
+            }
+            else
+            {
+                if(this.groupMedical.kids[1].kidName == null)
+                {
+                    let kidarray = this.groupMedical.kids;
+                    for(let kidElement of kidarray) {
+                        this.groupMedical.kids=[new Kid()];
+                       this.groupMedical.kids[0].kidName = kidElement.kidName;
+                       this.groupMedical.kids[0].kidDateOfBirth = kidElement.kidDateOfBirth;
+                       this.groupMedical.kids[0].kidGender = kidElement.kidGender;
+                        break;
+                     }
+                  
+                }
             }
             console.log(this.groupMedical);
             this.model.saveGroupMedical(this.groupMedical);

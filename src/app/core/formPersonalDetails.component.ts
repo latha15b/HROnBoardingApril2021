@@ -139,7 +139,9 @@ export class FormPersonalDetailsComponent
             this.model.getPersonalDetailsById(this.personalEmployeeId).subscribe(
                 p =>{ this.personalDetails = p;
                     this.changeState(this.personalDetails.stateId),
-                    this.changePermanentAddressState(this.personalDetails.permanentAddressStateId)
+                    this.changePermanentAddressState(this.personalDetails.permanentAddressStateId),
+                    this.personalDetails.pincode=this.personalDetails.pincode;
+                    this.personalDetails.stateId=this.personalDetails.stateId;
 
                 });
         }

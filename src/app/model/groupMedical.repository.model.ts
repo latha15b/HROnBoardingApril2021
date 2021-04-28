@@ -38,10 +38,7 @@ export class GroupMedicalModel
         }
         else
         {
-            this.dataSource.updateGroupMedical(groupMedical).subscribe(p => {
-                let index = this.groupMedical.findIndex(pd => this.locator(pd, groupMedical.groupMedicalId));
-                this.groupMedical.splice(index, 1, groupMedical);
-            });
+            this.dataSource.updateGroupMedical(groupMedical).subscribe(p => this.groupMedical.push(p));
         }
     }
 

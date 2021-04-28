@@ -73,6 +73,7 @@ export class PreviousEmployerComponent
                     if(data.length >= 1)
                     {
                         this.controlsPE.controlDetailsPE = data;
+                        this.count = data.length;
                         for (var val in data) {
                             if(val == "0")
                             {
@@ -133,6 +134,11 @@ export class PreviousEmployerComponent
                 this.previousEmployer.providentFundNo = 0;
                 this.previousEmployer.typeOfPFAccount = "NA";
                 this.previousEmployer.isLatestLastEmployer = false;
+                this.previousEmployer.hrName = "NA"
+                this.previousEmployer.hrContactNumber = "NA";
+                this.previousEmployer.hrEmailID = "NA";
+                this.previousEmployer.areTheExitFormalitiesCompleted=false;
+                    
                 if(val == "0")
                 {
                     this.previousEmployer.isLatestLastEmployer = true;

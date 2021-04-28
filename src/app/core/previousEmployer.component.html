@@ -86,7 +86,7 @@
           <div class="form-group col-3 px-0">
               <mat-form-field>
                   <mat-label>Universal Account Number</mat-label>
-                  <input matInput type="text" name="universalAccountNo_{{ind}}" [(ngModel)]="control.universalAccountNo" required />
+                  <input matInput  type="text" numbersOnly name="universalAccountNo_{{ind}}" [(ngModel)]="control.universalAccountNo" minlength="12" maxlength="12" required />
               </mat-form-field>
           </div>
           <div class="form-group col-3 px-0" *ngIf = "ind == 0">
@@ -121,7 +121,7 @@
       </div>
     </div>
     <div class="form-row col-11 px-0" *ngIf = "count < 3"> 
-      <button mat-button  *ngIf = "!editing"  (click)="addControlsPE(form)" class="transparentButton"><mat-icon class="addIcon">add_circle_outline</mat-icon>Add</button>
+      <button mat-button    (click)="addControlsPE(form)" class="transparentButton"><mat-icon class="addIcon">add_circle_outline</mat-icon>Add</button>
     </div>
       <div class="form-row col-11 px-0"> 
         <!-- <div class="form-row col-10" *ngIf = "count < 3 "> 

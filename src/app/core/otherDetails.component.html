@@ -19,7 +19,8 @@
     <div class="form-group col-3 px-0">
         <mat-form-field class="example-form-field">
             <mat-label>PAN Card Number</mat-label>
-            <input matInput type="text" name="panNumber" [(ngModel)]="otherDetails.panNumber" maxlength="10" required pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}">
+            <input matInput type="text" name="panNumber" [(ngModel)]="otherDetails.panNumber"
+             maxlength="10" required pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" (ngModelChange)="otherDetails.panNumber = $event.toUpperCase()">
             <!-- <button mat-button *ngIf="personalDetails.title" matSuffix mat-icon-button aria-label="Clear" (click)="personalDetails.title=''">
                <mat-icon color="primary" [inline]="true">close</mat-icon>
             </button> -->
@@ -60,7 +61,7 @@
     <div class="form-group col-3 px-0">
         <mat-form-field class="example-form-field">
             <mat-label>Passport Number</mat-label>
-            <input matInput type="text" name="passportNumber" [(ngModel)]="otherDetails.passportNumber" required>
+            <input matInput type="text" name="passportNumber" [(ngModel)]="otherDetails.passportNumber" required minlength="8" maxlength="8" pattern="^[A-Za-z0-9 ]+$">
             <!-- <button mat-button *ngIf="personalDetails.title" matSuffix mat-icon-button aria-label="Clear" (click)="personalDetails.title=''">
                <mat-icon color="primary" [inline]="true">close</mat-icon>
             </button> -->

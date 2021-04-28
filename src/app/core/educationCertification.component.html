@@ -55,8 +55,8 @@
       <a type="button" (click)="deleteControlsEC(controlec)"  *ngIf = "indEC > 0" class="deleteAnchor">Delete</a>
     </div>
   </div>
-  <div class="form-row col-11 px-0" *ngIf = "count < 3" [disabled]="!formEC.valid"> 
-      <button mat-button  *ngIf = "!editing"  (click)="addControlsEC(formEC)" class="transparentButton"><mat-icon class="addIcon">add_circle_outline</mat-icon>Add</button>
+  <div class="form-row col-11 px-0" *ngIf = "countEC < 3"> 
+      <button mat-button  (click)="addControlsEC(formEC)" class="transparentButton"><mat-icon class="addIcon">add_circle_outline</mat-icon>Add</button>
       <!-- <button mat-button aria-label="Example icon button" (click)="addControlsEC(formEC)">+ Additional Certifications </button> -->
   </div>
   <div class="form-row col-11 px-0"> 

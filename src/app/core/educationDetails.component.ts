@@ -68,6 +68,7 @@ export class EducationDetailsComponent
                 {
                     this.controls.controlDetails= data;
                     this.editing = true;
+                    this.count = data.length;
                 }
             });
            

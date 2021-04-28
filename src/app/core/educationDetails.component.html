@@ -67,7 +67,7 @@
       </div>
       <div class="form-group col-1">
         <!-- <a type="button" aria-label="Example icon button" *ngIf = "ind > 0 && !editing" (click)="deleteControls(control)" class="deleteAnchor">Delete</a> -->
-        <a type="button" (click)="deleteControls(control)"   *ngIf = "ind > 0 && !editing" class="deleteAnchor">Delete</a>
+        <a type="button" (click)="deleteControls(control)"   *ngIf = "ind > 0" class="deleteAnchor">Delete</a>
       </div>
       
       <!-- <div class="form-row col-11"> 
@@ -77,13 +77,13 @@
         </div>
       </div> -->
     </div>
-    <div class="form-row col-10 px-0" *ngIf = "count < 3 && !isSummaryPage"> 
+    <div class="form-row col-10 px-0" *ngIf = "count < 3"> 
       <div class="form-group col-3 px-0">
         <!-- <button mat-button aria-label="Example icon button with a plus one icon"  (click)="addControls(form)">
           + Additional Qualifications
         </button> -->
         
-        <button type="button" (click)="addControls(form)" *ngIf = "!editing" class="transparentButton"><mat-icon class="addIcon">add_circle_outline</mat-icon>Add</button>
+        <button type="button" (click)="addControls(form)"  class="transparentButton"><mat-icon class="addIcon">add_circle_outline</mat-icon>Add</button>
       </div> 
     </div>
 

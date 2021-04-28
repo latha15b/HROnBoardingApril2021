@@ -114,4 +114,8 @@ export class OtherDetailsComponent
     {
         this.otherDetails = new OtherDetails();
     }
+    onKeyup(event)
+    {
+        
+    }
 }

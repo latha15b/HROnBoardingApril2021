@@ -15,7 +15,7 @@ export class PreviousEmployer
         public isLatestLastEmployer?: boolean,
         public personalDetailEmployeeId?:number,
         public hrName?:string,
-        public hrContactNumber?: number,
+        public hrContactNumber?: string,
         public hrEmailID?: string
         ) {}
 }

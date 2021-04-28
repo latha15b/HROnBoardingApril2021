@@ -2,6 +2,7 @@ import { Component, EventEmitter, Inject, Input, Output, ViewChild } from "@angu
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, Observer } from 'rxjs';
+import { timestamp } from "rxjs/operators";
 import { EducationCertification } from '../model/educationcertification.model';
 import { EducationCertificationModel } from '../model/educationcertification.repository.model';
 import { SharedState, SHARED_STATE } from './sharedState.model';
@@ -17,9 +18,10 @@ export class EducationCertificationComponent
     controlDetailsEC: EducationCertification = new EducationCertification();
     educationCertification: EducationCertification = new EducationCertification();
     //today = new Date();
-    count:number = 1;
+    countEC:number = 1;
     personalEmployeeId: number = -1;
     editing: boolean = false;
+    AddControlnewEC: boolean = false;
     @Output() public submitEducationDetails = new EventEmitter();
     @Input('isParentValid') isParentValid = false; 
     href: string = "";
@@ -46,7 +48,6 @@ export class EducationCertificationComponent
         }     
         if(sessionStorage.getItem("PersonalDetailsEmployeeId"))
         {
-            this.editing = false;
             this.personalEmployeeId = Number(sessionStorage.getItem("PersonalDetailsEmployeeId"));
             this.model.getEducationCertificationByEmployeeId(this.personalEmployeeId).subscribe
                 (dataEC => {
@@ -54,6 +55,7 @@ export class EducationCertificationComponent
                     {
                         this.controlsEC.controlDetailsEC = dataEC;
                         this.editing = true;
+                        this.countEC = dataEC.length;
                     }
                 });
         }
@@ -71,16 +73,18 @@ export class EducationCertificationComponent
       if(this.controlsEC.controlDetailsEC.length < 3 && form.valid)
       {
         const newControl = new EducationCertification;
-        newControl.educationCertificationId=this.count++;
+        newControl.educationCertificationId = this.countEC++;
         this.controlsEC.controlDetailsEC.push(JSON.parse(JSON.stringify(newControl)));
+        this.AddControlnewEC = true;
       }    
     }
     deleteControlsEC(controlEC)
     {
+        this.AddControlnewEC = false;
         if(this.controlsEC.controlDetailsEC.length > 1)
         {
             this.controlsEC.controlDetailsEC = this.controlsEC.controlDetailsEC.filter(x => x.educationCertificationId != controlEC.educationCertificationId)
-            this.count = this.count-1;
+            this.countEC = this.countEC-1;
         }
     }
    
@@ -88,8 +92,8 @@ export class EducationCertificationComponent
     submitForm(form: NgForm)
     {
         this.submitEducationDetails.emit();
-        
-        if(form.valid && this.isParentValid)
+       
+        if(form.valid && this.isParentValid && !this.AddControlnewEC) 
         {
             console.log("In");
          
@@ -111,7 +115,12 @@ export class EducationCertificationComponent
                 console.log(this.educationCertification);
                 this.model.saveEducationCertification(this.educationCertification);
               }
+            this.editing = true;  
             this.router.navigateByUrl("/form/previousEmployers");
+        }
+        else
+        {
+            this.AddControlnewEC = false;
         }
     }
    
