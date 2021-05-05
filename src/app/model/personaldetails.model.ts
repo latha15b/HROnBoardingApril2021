@@ -13,6 +13,8 @@ export class PersonalDetails
         public cityId?: string,
         public pincode?: number,
         public stateId?: string,
+        public currentCityId?: string,
+        public currentStateId?:string,
         public permanentAddress?: string,
         public permanentAddressCityId?: string,
         public permanentAddressPincode?: number,

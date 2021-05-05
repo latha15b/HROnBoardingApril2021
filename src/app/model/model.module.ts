@@ -22,6 +22,8 @@ import { OtherProfessionalDetailsRestDataSource,REST_URL_OPD } from "./otherProf
 import { OtherProfessionalDetailsModel } from "./otherProfessionalDetails.repository.model";
 import { UploadDocumentsRestDataSource,REST_URL_UD } from "./uploadDocuments.rest.datasource";
 import { UploadDocumentsModel } from "./uploadDocuments.repository.model";
+import { PersonalDetailsSummaryRestDataSource, REST_URL_SM } from "./personalDetailsSummary.rest.datasource";
+import { PersonalDetailsSummaryModel } from "./personalDetailsSummary.repository.model";
 //import { TestComponent } from './test/test.component';
 
 @NgModule({
@@ -35,7 +37,8 @@ import { UploadDocumentsModel } from "./uploadDocuments.repository.model";
         KidRestDataSource,KidModel,
         OtherDetailsRestDataSource,OtherDetailsModel,
         OtherProfessionalDetailsRestDataSource,OtherProfessionalDetailsModel,
-        UploadDocumentsRestDataSource,UploadDocumentsModel,
+        UploadDocumentsRestDataSource,UploadDocumentsModel,PersonalDetailsSummaryModel,
+        PersonalDetailsSummaryRestDataSource,
 
     {provide: REST_URL, useValue: `https://localhost:5001/api/personaldetails`},
     {provide: REST_URL_OTP, useValue: `https://localhost:5001/api/otpGenerators`},
@@ -46,7 +49,8 @@ import { UploadDocumentsModel } from "./uploadDocuments.repository.model";
     {provide: REST_URL_Kid, useValue: `https://localhost:5001/api/kids`},
     {provide: REST_URL_OD, useValue: `https://localhost:5001/api/otherDetails`},
     {provide: REST_URL_OPD, useValue: `https://localhost:5001/api/otherProfessionalDetails`},
-    {provide: REST_URL_UD, useValue: `https://localhost:5001/api/uploadDocuments`}
+    {provide: REST_URL_UD, useValue: `https://localhost:5001/api/uploadDocuments`},
+    {provide: REST_URL_SM, useValue: `https://localhost:5001/api/summaryDetails`}
     ],
     declarations: []
 })

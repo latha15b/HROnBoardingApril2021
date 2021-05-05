@@ -123,8 +123,8 @@
         <div class="form-group col-3 px-0">
             <mat-form-field>
                 <mat-label>Select State</mat-label>
-                <select matNativeControl  [(ngModel)]="personalDetails.stateId" name="stateId" 
-                (ngModelChange)="changeState(personalDetails.stateId)"
+                <select matNativeControl  [(ngModel)]="personalDetails.currentStateId" name="currentStateId" 
+                (ngModelChange)="changeCurrentState(personalDetails.currentStateId)"
                  required>
                     <option *ngFor="let state of states" [ngValue]="state.stateId">
                         {{state.stateName}}
@@ -135,8 +135,8 @@
         <div class="form-group col-3 px-0">
             <mat-form-field>
                 <mat-label>Select City</mat-label>
-                <select matNativeControl [(ngModel)]="personalDetails.cityId" name="cityId" required>
-                    <option *ngFor="let city of cities" [ngValue]="city.cityId">
+                <select matNativeControl [(ngModel)]="personalDetails.currentCityId" name="currentCityId" required>
+                    <option *ngFor="let city of citiesCurr" [ngValue]="city.cityId">
                         {{city.cityName}}
                     </option> 
                 </select>                   

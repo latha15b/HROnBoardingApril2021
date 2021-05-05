@@ -40,10 +40,15 @@ export class PersonalDetailsModel
         return this.states;
     }
 
-    getCityDetails(stateId: number): City[]
+    getCityDetails(stateId: number): Observable<City[]>
+    {
+        return  this.dataSource.getCitiesById(stateId);
+    }
+    getCityDetailByStateId(stateId: number): City[]
     {
         this.cities = [];
-        this.dataSource.getCities(stateId).subscribe(p => this.cities.push(...p));
+        this.dataSource.getCitiesById(stateId).subscribe(p => this.cities.push(...p));
+        console.log(this.cities);
         return this.cities;
     }
     getCitiesByStateName(stateName: string): City[]
@@ -52,7 +57,6 @@ export class PersonalDetailsModel
         this.dataSource.getCitiesByStateName(stateName).subscribe(p => this.cities.push(...p));
         return this.cities;
     }
-
 
     savePersonalDetails(personaldetails: PersonalDetails): Observable<any>
     {

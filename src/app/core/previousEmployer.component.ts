@@ -159,8 +159,9 @@ export class PreviousEmployerComponent
                     }
                 }
                
-                console.log(this.previousEmployer);
                 this.model.savePreviousEmployer(this.previousEmployer);
+                console.log(this.previousEmployer);
+
               }
            
            

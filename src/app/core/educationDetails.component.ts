@@ -140,7 +140,7 @@ export class EducationDetailsComponent
             }
             else
             {
-                console.log("In");
+                console.log(this.controls.controlDetails);
                 for (var val in this.controls.controlDetails) 
                 {
                     this.education = new EducationQualification();
@@ -154,8 +154,9 @@ export class EducationDetailsComponent
                     {
                         this.education.isHighestQualification=true;
                     }
-                    console.log(this.education);
-                    this.model.saveEducationQualification(this.education);
+                   var result =  this.model.saveEducationQualification(this.education);
+                   console.log(result);
+
                 }
                 this.router.navigateByUrl("/form/educationdetails");
             }

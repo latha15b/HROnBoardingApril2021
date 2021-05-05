@@ -52,11 +52,8 @@ export class SummaryDetailsComponent
 
     submitForm(form: NgForm)
     {
-        if(form.valid)
-        {
-            window.close();
             sessionStorage.removeItem("PersonalDetailsEmployeeId");
-        }
+            this.router.navigateByUrl("");
     }
     getOtherDetailsSummary()
     {

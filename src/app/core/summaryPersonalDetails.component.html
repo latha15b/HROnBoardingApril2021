@@ -1,0 +1,571 @@
+<div id="summaryHtml">
+    <div class="float-right">
+        <button id="btn-export" class="btn btn-primary" (click)="exportHTML();">Download</button>
+    </div>
+    <h5><span><b>SUMMARY</b></span></h5>
+    
+    <hr>
+    <h5><span><b>PERSONAL DETAILS</b></span></h5>
+    <body>
+        <div class="container">
+            <div class="row col-12">
+                <div class="col-3">
+                    <label>Title:</label>
+                    <span>&nbsp;{{personalDetailsSummary.title}}</span>
+                </div>
+                <div class="col-3">
+                    <label>First Name:</label>
+                    <span>&nbsp;{{personalDetailsSummary.firstName}}</span>                    
+                </div>
+                <div class="col-3">
+                    <label>Last Name:</label>
+                    <span>&nbsp;{{personalDetailsSummary.lastName}}</span>                    
+                </div>
+                <div class="col-3">
+                    <label>Date of Birth:</label>
+                    <span>&nbsp;{{personalDetailsSummary.dateOfBirth}}</span>                    
+                </div>                                
+            </div>
+            <div class="row col-12">
+                <div class="col-3">
+                    <label>Cell Number:</label>
+                    <span>&nbsp;{{personalDetailsSummary.cellNumber}}</span>                    
+                </div>
+                <div class="col-3">
+                    <label>City:</label>
+                    <span>&nbsp;{{personalDetailsSummary.city}}</span>                    
+                </div>
+                <div class="col-3">
+                    <label>Gender:</label>
+                    <span>&nbsp;{{personalDetailsSummary.gender}}</span>                    
+                </div>
+                <div class="col-3">
+                    <label>Pincode:</label>
+                    <span>&nbsp;{{personalDetailsSummary.pincode}}</span>
+                </div>
+            </div>
+            <div class="row col-12">
+                <div class="col-3">
+                    <label>State:</label>
+                    <span>&nbsp;{{personalDetailsSummary.state}}</span>
+                </div>
+                <div class="col-3">
+                    <label>BloodGroup:</label>
+                    <span>&nbsp;{{personalDetailsSummary.bloodGroup}}</span>                    
+                </div>
+                <div class="col-3">
+                    <label>EmergencyContactNumber:</label>
+                    <span>&nbsp;{{personalDetailsSummary.emergencyContactNumber}}</span>                    
+                </div>
+                <div class="col-3">
+                    <label>PersonalEmailId:</label>
+                    <span>&nbsp;{{personalDetailsSummary.personalEmailId}}</span>                    
+                </div>
+            </div>
+            <div class="row col-12">
+                <div class="col-6">
+                    <label>Current Address:</label>
+                    <span>&nbsp;{{personalDetailsSummary.currentAddress}}</span>                    
+                </div>
+                <div class="col-3">
+                    <label>IsDeclarationStatus:</label>
+                    <span>&nbsp;{{personalDetailsSummary.isDeclarationStatus}}</span>                    
+                </div>
+                <div class="col-3">
+                    <label>TotalYearsOfExperience:</label>
+                    <span>&nbsp;{{personalDetailsSummary.totalYearsOfExperience}}</span>                    
+                </div>
+            </div>
+            <div class="row col-12">
+                <div class="col-6">
+                    <label>Permamnent Address:</label>
+                    <span>&nbsp;{{personalDetailsSummary.permanentAddress}}</span>                    
+                </div>
+                <div class="col-3">
+                    <label>PermamnentAddressState:</label>
+                    <span>&nbsp;{{personalDetailsSummary.permanentAddressState}}</span>                    
+                </div>
+                <div class="col-3">
+                    <label>PermamnentAddressCity:</label>
+                    <span>&nbsp;{{personalDetailsSummary.permanentAddressCity}}</span>                    
+                </div>
+            </div>
+            <div class="row col-12">
+                <div class="col-6">
+                    <label>PermamnentAddressPincode:</label>
+                    <span>&nbsp;{{personalDetailsSummary.permanentAddressPincode}}</span>                    
+                </div>                
+            </div>
+        </div>
+        <hr>
+    <h5><span><b>EDUCATION QUALIFICATIONS</b></span></h5>
+    <div class="container" 
+         *ngFor="let item of this.personalDetailsSummary.educationQualificationsSummaries;
+        let i = index">
+            <div class="row col-12">
+                <div class="col-2">
+                    <label>Qualification {{i+1}}:</label>
+                    <span>&nbsp;{{item.qualification}}</span>
+                </div>
+                <div class="col-2">
+                    <label>Year Of Passing {{i+1}}:</label>
+                    <span>&nbsp;{{item.yearOfPassing}}</span>
+                </div>
+                <div class="col-3">
+                    <label>Name Of University {{i+1}}:</label>
+                    <span>&nbsp;{{item.nameOfUniversity}}</span>
+                </div>
+                <div class="col-2">
+                    <label>Specialization {{i+1}}:</label>
+                    <span>&nbsp;{{item.specialization}}</span>
+                </div>
+                <div class="col-3">
+                    <label>IsHighestQualification {{i+1}}:</label>
+                    <span>&nbsp;{{item.isHighestQualification}}</span>
+                </div>
+            </div>            
+        </div>
+    <hr>
+    <h5><span><b>EDUCATION CERTIFICATIONS</b></span></h5>
+    <div class="container" 
+         *ngFor="let item of this.personalDetailsSummary.educationCertificationsSummaries;
+        let i = index">
+            <div class="row col-12">
+                <div class="col-3">
+                    <label>Name Of Certifcation {{i+1}}:</label>
+                    <span>&nbsp;{{item.nameOfCertifcation}}</span>
+                </div>
+                <div class="col-2">
+                    <label>Year {{i+1}}:</label>
+                    <span>&nbsp;{{item.year}}</span>
+                </div>
+                <div class="col-3">
+                    <label>CertificateNumber {{i+1}}:</label>
+                    <span>&nbsp;{{item.certificateNumber}}</span>
+                </div>
+                <div class="col-3">
+                    <label>ExpiryDateOfCertificate {{i+1}}:</label>
+                    <span>&nbsp;{{item.expiryDateOfCertificate}}</span>
+                </div>                
+            </div>            
+        </div>
+        <hr>
+    <h5><span><b>PREVIOUS EMPLOYERS</b></span></h5>
+    <div class="container" 
+         *ngFor="let item of this.personalDetailsSummary.previousEmployersSummaries;
+        let i = index">
+            <div class="row col-12">
+                <div class="col-3">
+                    <label>PreviousEmployerName {{i+1}}:</label>
+                    <span>&nbsp;{{item.previousEmployerName}}</span>
+                </div>
+                <div class="col-2">
+                    <label>DateOfJoining {{i+1}}:</label>
+                    <span>&nbsp;{{item.dateOfJoining}}</span>
+                </div>
+                <div class="col-2">
+                    <label>LastWorkingDay {{i+1}}:</label>
+                    <span>&nbsp;{{item.lastWorkingDay}}</span>
+                </div>
+                <div class="col-2">
+                    <label>ReasonForLeaving {{i+1}}:</label>
+                    <span>&nbsp;{{item.reasonForLeaving}}</span>
+                </div>
+                <div class="col-3">
+                    <label>AreTheExitFormalitiesCompleted {{i+1}}:</label>
+                    <span>&nbsp;{{item.areTheExitFormalitiesCompleted}}</span>
+                </div>                
+            </div>
+            <div class="row col-12">
+                <div class="col-3">
+                    <label>UniversalAccountNo {{i+1}}:</label>
+                    <span>&nbsp;{{item.universalAccountNo}}</span>
+                </div>
+                <div class="col-2">
+                    <label>ProvidentFundNo {{i+1}}:</label>
+                    <span>&nbsp;{{item.providentFundNo}}</span>
+                </div>
+                <div class="col-2">
+                    <label>TypeOfPFAccount {{i+1}}:</label>
+                    <span>&nbsp;{{item.typeOfPFAccount}}</span>
+                </div>
+                <div class="col-2">
+                    <label>IsLatestLastEmployer {{i+1}}:</label>
+                    <span>&nbsp;{{item.isLatestLastEmployer}}</span>
+                </div>
+                <div class="col-3">
+                    <label>HR Name {{i+1}}:</label>
+                    <span>&nbsp;{{item.hrName}}</span>
+                </div>
+            </div>
+            <div class="row col-12">
+                <div class="col-3">
+                    <label>HR Contact Number {{i+1}}:</label>
+                    <span>&nbsp;{{item.hrContactNumber}}</span>
+                </div>
+                <div class="col-3">
+                    <label>HR EmailID {{i+1}}:</label>
+                    <span>&nbsp;{{item.hrEmailID}}</span>
+                </div>
+            </div>
+        </div>
+        <hr>
+    <h5><span><b>GROUP MEDICAL COVER SUMMARY</b></span></h5>
+    <div class="container">
+        <div class="row col-12">
+            <div class="col-4">
+                <label>DateOfJoining:</label>
+                <span>&nbsp;{{personalDetailsSummary.groupMedicalCoverSummary.dateOfJoining}}</span>
+            </div>
+            <div class="col-4">
+                <label>ParentOrInLawsName1:</label>
+                <span>&nbsp;{{personalDetailsSummary.groupMedicalCoverSummary.parentOrInLawsName1}}</span>
+            </div>
+            <div class="col-4">
+                <label>ParentOrInLawsName2:</label>
+                <span>&nbsp;{{personalDetailsSummary.groupMedicalCoverSummary.parentOrInLawsName2}}</span>
+            </div>            
+        </div>
+        <div class="row col-12">
+            <div class="col-4">
+                <label>ParentOrInLawsName1Relationship:</label>
+                <span>&nbsp;{{personalDetailsSummary.groupMedicalCoverSummary.parentOrInLawsName1Relationship}}</span>
+            </div>
+            <div class="col-4">
+                <label>ParentOrInLawsName2Relationship:</label>
+                <span>&nbsp;{{personalDetailsSummary.groupMedicalCoverSummary.parentOrInLawsName2Relationship}}</span>
+            </div>
+            <div class="col-4">
+                <label>Married:</label>
+                <span>&nbsp;{{personalDetailsSummary.groupMedicalCoverSummary.married}}</span>
+            </div>           
+        </div>
+        <div class="row col-12">
+            <div class="col-4">
+                <label>DateOfMarriage:</label>
+                <span>&nbsp;{{personalDetailsSummary.groupMedicalCoverSummary.dateOfMarriage}}</span>
+            </div>
+            <div class="col-4">
+                <label>SpouseName:</label>
+                <span>&nbsp;{{personalDetailsSummary.groupMedicalCoverSummary.spouseName}}</span>
+            </div>
+            <div class="col-4">
+                <label>SpouseDateOfBirth:</label>
+                <span>&nbsp;{{personalDetailsSummary.groupMedicalCoverSummary.spouseDateOfBirth}}</span>
+            </div>
+            <div class="col-3">
+                <label>SpouseGender:</label>
+                <span>&nbsp;{{personalDetailsSummary.groupMedicalCoverSummary.spouseGender}}</span>
+            </div>            
+        </div>
+    </div>
+    <hr>
+    <h5><span><b>KIDS</b></span></h5>
+    <div class="container" 
+         *ngFor="let item of this.personalDetailsSummary.groupMedicalCoverSummary.kids;
+        let i = index">
+            <div class="row col-12">
+                <div class="col-3">
+                    <label>Kid Name {{i+1}}:</label>
+                    <span>&nbsp;{{item.kidName}}</span>
+                </div>
+                <div class="col-3">
+                    <label>Kid DateOfBirth {{i+1}}:</label>
+                    <span>&nbsp;{{item.kidDateOfBirth}}</span>
+                </div>
+                <div class="col-3">
+                    <label>Kid Gender {{i+1}}:</label>
+                    <span>&nbsp;{{item.kidGender}}</span>
+                </div>
+            </div>            
+        </div>
+        <hr>
+        <h5><span><b>OTHER DETAILS</b></span></h5>
+        <div class="container">
+            <div class="row col-12">
+                <div class="col-3">
+                    <label>PanNumber:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.panNumber}}</span>
+                </div>
+                <div class="col-3">
+                    <label>NameAsOnPANCard:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.nameAsOnPANCard}}</span>
+                </div>
+                <div class="col-3">
+                    <label>AadhaarNumber:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.aadhaarNumber}}</span>
+                </div>
+                <div class="col-3">
+                    <label>NameAsOnAadhaar:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.nameAsOnAadhaar}}</span>
+                </div>
+            </div>
+            <div class="row col-12">
+                <div class="col-3">
+                    <label>PassportNumber:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.passportNumber}}</span>
+                </div>
+                <div class="col-3">
+                    <label>NameAsOnPassport:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.nameAsOnPassport}}</span>
+                </div>
+                <div class="col-3">
+                    <label>Nationality:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.nationality}}</span>
+                </div>
+                <div class="col-3">
+                    <label>PlaceOfIssue:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.placeOfIssue}}</span>
+                </div>
+            </div>
+            <div class="row col-12">
+                <div class="col-3">
+                    <label>ValidFrom:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.validFrom}}</span>
+                </div>
+                <div class="col-3">
+                    <label>ValidTo:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.validTo}}</span>
+                </div>
+                <div class="col-3">
+                    <label>BankName:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.bankName}}</span>
+                </div>
+                <div class="col-3">
+                    <label>AccountNumber:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.accountNumber}}</span>
+                </div>
+            </div>
+            <div class="row col-12">
+                <div class="col-3">
+                    <label>IFSCCode:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.ifscCode}}</span>
+                </div>
+                <div class="col-3">
+                    <label>NameAsInBankAccount:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.nameAsInBankAccount}}</span>
+                </div>
+                <div class="col-3">
+                    <label>Branch:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.branch}}</span>
+                </div>
+                <!-- <div class="col-3">
+                    <label>PermanentAddress:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.permanentAddress}}</span>
+                </div> -->
+            </div>
+            <!-- <div class="row col-12">
+                <div class="col-3">
+                    <label>Pincode:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.pincode}}</span>
+                </div>
+                <div class="col-3">
+                    <label>State:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherDetailsSummary.state}}</span>
+                </div>               
+            </div> -->
+        </div>
+        <hr>
+        <h5><span><b>OTHER PROFESSIONAL DETAILS</b></span></h5>
+        <div class="container">
+            <div class="row col-12">
+                <div class="col-3">
+                    <label>PrimarySkills:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherProfessionalDetailsSummary.primarySkills}}</span>
+                </div>
+                <div class="col-3">
+                    <label>PrimarySkillsLevel:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherProfessionalDetailsSummary.primarySkillsLevel}}</span>
+                </div>
+                <div class="col-3">
+                    <label>SecondarySkills:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherProfessionalDetailsSummary.secondarySkills}}</span>
+                </div>
+                <div class="col-3">
+                    <label>SecondarySkillLevel:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherProfessionalDetailsSummary.secondarySkillLevel}}</span>
+                </div>
+            </div>
+            <div class="row col-12">
+                <div class="col-3">
+                    <label>VerbalCommunicationLevel:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherProfessionalDetailsSummary.verbalCommunicationLevel}}</span>
+                </div>
+                <div class="col-3">
+                    <label>WrittenCommunicationLevel:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherProfessionalDetailsSummary.writtenCommunicationLevel}}</span>
+                </div>
+                <div class="col-3">
+                    <label>PresentationSkillsLevel:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherProfessionalDetailsSummary.presentationSkillsLevel}}</span>
+                </div>
+                <div class="col-3">
+                    <label>CustomerInterfactingLevel:</label>
+                    <span>&nbsp;{{personalDetailsSummary.otherProfessionalDetailsSummary.customerInterfactingLevel}}</span>
+                </div>
+            </div>
+        </div>
+        <hr>
+    <h5><span><b>UPLOAD DOCUMENTS</b></span></h5>
+    <div class="container" 
+         *ngFor="let item of this.personalDetailsSummary.uploadDocumentsSummary;
+        let i = index">
+            <div class="row col-12">
+                <div class="col-3">
+                    <label>FileName {{i+1}}:</label>
+                    <span>&nbsp;{{item.fileName}}</span>
+                </div>
+                <div class="col-3">
+                    <label>DocumentTypeName {{i+1}}:</label>
+                    <span>&nbsp;{{item.documentType}}</span>
+                </div>                
+            </div>            
+        </div>
+        <hr>    
+        <div class="form-group col-11 px-0">
+            <button type="button" class="btn btn-secondary m-1 btn-success"
+              (click)="getOtherDetailsSummary()">Previous</button>
+            <button type="submit" class="btn btn-success m-1" style="float: right;" 
+             (click)="submitForm()">Submit
+            </button> 
+          </div>    
+      
+    </body>   
+
+<!-- 
+    <div class="row col-12">
+            <div class="col-3">
+                <label>Title:</label>
+                <span>{{personalDetailsSummary.title}}</span>
+            </div>
+            <div class="col-3">
+                <label>First Name:</label>
+                <span>{{personalDetailsSummary.firstName}}</span>
+            </div>
+            <div class="col-3">
+                <label>Last Name:</label>
+                <span>{{personalDetailsSummary.lastName}}</span>
+            </div>
+            <div class="col-3">
+                <label>Date of Birth:</label>
+                <span>{{personalDetailsSummary.title}}</span>
+            </div>
+        </div>
+    
+    <h5>
+    {{this.personalDetailsSummary.employeeId}}
+</h5>
+<hr>
+<table class="table table-sm table-bordered mt-1 text-dark">
+    <tr>
+        <th></th>
+        <th>Qualifications</th>
+        <th>Year of Passing</th>
+        <th>Name of university</th>
+        <th>Specialization</th>
+        <th>IsHighestQUalification</th>
+    </tr>
+    <tr *ngFor="let item of this.personalDetailsSummary.educationQualificationsSummaries;
+        let i = index">
+        <td>{{i+1}}</td>
+        <td>{{item.qualification}}</td>
+        <td>{{item.yearOfPassing}}</td>
+        <td>{{item.nameOfUniversity}}</td>
+        <td>{{item.specialization}}</td>
+        <td>{{item.isHighestQualification}}</td>
+    </tr>
+</table>
+<hr>
+<table class="table table-sm table-bordered mt-1 text-dark">
+    <tr>
+        <th></th>
+        <th>Name of Certifcations</th>
+        <th>Year</th>
+        <th>Certifcate Number</th>
+        <th>Expiry Date of Certificate</th>
+    </tr>
+    <tr *ngFor="let item of this.personalDetailsSummary.educationCertificationsSummaries;
+        let i = index">
+        <td>{{i+1}}</td>
+        <td>{{item.nameOfCertifcation}}</td>
+        <td>{{item.year}}</td>
+        <td>{{item.certificateNumber}}</td>
+        <td>{{item.expiryDateOfCertificate}}</td>
+    </tr>
+</table>
+<hr>
+<!-- <table class="table table-sm table-bordered mt-1 text-dark">
+    <tr>
+        <th></th>
+        <th>Previous Employer Name</th>
+        <th>Date of Joining</th>
+        <th>LastWorkingDay</th>
+        <th>Reason for Leaving</th>
+        <th>Are the Exit Formalitied Completed</th>
+        <th>Universal Account No</th>
+        <th>Provident Fund No</th>
+        <th>Type of PF Account</th>
+        <th>Is Latest Last Employer</th>
+        <th>Hr Name</th>
+        <th>Hr Contact No</th>
+        <th>Hr Email ID</th>
+    </tr>
+    <tr *ngFor="let item of this.personalDetailsSummary.previousEmployersSummaries;
+        let i = index">
+        <td>{{i+1}}</td>
+        <td>{{item.previousEmployerName}}</td>
+        <td>{{item.dateOfJoining}}</td>
+        <td>{{item.lastWorkingDay}}</td>
+        <td>{{item.reasonForLeaving}}</td>
+        <td>{{item.areTheExitFormalitiesCompleted}}</td>
+        <td>{{item.universalAccountNo}}</td>
+        <td>{{item.providentFundNo}}</td>
+        <td>{{item.typeOfPFAccount}}</td>
+        <td>{{item.isLatestLastEmployer}}</td>
+        <td>{{item.hrName}}</td>
+        <td>{{item.hrContactNumber}}</td>
+        <td>{{item.hrEmailID}}</td>
+    </tr>
+</table>
+<hr>
+<table class="table table-sm table-bordered mt-1 text-dark">
+    <tr>
+        <th></th>
+        <th>Kid Name</th>
+        <th>Kid Gender</th>
+        <th>Kid Date of Birth</th>
+    </tr>
+    <tr *ngFor="let item of this.personalDetailsSummary.groupMedicalCoverSummary.kids;
+        let i = index">
+        <td>{{i+1}}</td>
+        <td>{{item.kidName}}</td>
+        <td>{{item.kidGender}}</td>
+        <td>{{item.kidDateOfBirth}}</td>
+    </tr>
+</table>
+
+<hr>
+<h5>
+    {{personalDetailsSummary.otherDetailsSummary.panNumber}}
+</h5>
+
+<hr>
+<h5>
+    {{personalDetailsSummary.otherProfessionalDetailsSummary.primarySkills}}
+</h5>
+<hr>
+<table class="table table-sm table-bordered mt-1 text-dark">
+    <tr>
+        <th></th>
+        <th>File Name</th>
+        <th>Modified Date</th>
+        <th>Document Type</th>
+    </tr>
+    <tr *ngFor="let item of this.personalDetailsSummary.uploadDocumentsSummary;
+        let i = index">
+        <td>{{i+1}}</td>
+        <td>{{item.fileName}}</td>
+        <td>{{item.modifiedDate}}</td>
+        <td>{{item.documentType}}</td>
+    </tr>
+</table> -->

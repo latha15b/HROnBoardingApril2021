@@ -9,6 +9,8 @@ import { OtherDetailsComponent } from "./core/otherDetails.component";
 import { OtherProfessionalDetailsComponent } from "./core/otherProfessionalDetails.component";
 import { UploadDocumentsComponent } from "./core/uploadDocuments.component";
 import { SummaryDetailsComponent } from './core/summaryDetails.component';
+import { SummaryPersonalDetailsComponent  } from './core/summaryPersonalDetails.component';
+
 
 
 const routes: Routes = 
@@ -22,6 +24,7 @@ const routes: Routes =
     { path: "form/otherProfessionalDetails", component: OtherProfessionalDetailsComponent }, 
     { path: "form/uploadDocuments", component: UploadDocumentsComponent }, 
     { path: "form/summaryDetails", component: SummaryDetailsComponent }, 
+    { path: "form/summaryPersonalDetails", component: SummaryPersonalDetailsComponent  },
     { path: "", component: HomepageComponent  }
 ] 
 export const routing = RouterModule.forRoot(routes);

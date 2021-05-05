@@ -39,6 +39,7 @@ export class EducationCertificationComponent
     {
         this.href = this.router.url;
         console.log("URL " + this.href);
+        this.editing = true;
        
         this.controlsEC.controlDetailsEC = [this.controlDetailsEC];
         if(!this.editing)
@@ -120,6 +121,7 @@ export class EducationCertificationComponent
         }
         else
         {
+            this.editing = true;
             this.AddControlnewEC = false;
         }
     }

@@ -89,6 +89,7 @@ export class GroupMedicalComponent
         if(sessionStorage.getItem("PersonalDetailsEmployeeId"))
         {
             this.editing = false;
+            this.delay(3000);
             this.personalEmployeeId = Number(sessionStorage.getItem("PersonalDetailsEmployeeId"));
             this.personalDetailsModel.getPersonalDetailsById(this.personalEmployeeId).subscribe
             (data => {
@@ -121,18 +122,6 @@ export class GroupMedicalComponent
                         {
                             this.groupMedical.kids= [new Kid(),new Kid()]
                         }
-                        // if(this.groupMedical.kids.length > 0)
-                        // {
-                        //     this.groupMedical.doYouHaveKids = true;
-                        //     this.groupMedical.kids = this.groupMedical.kids;
-                        //     var kidCount = 0;
-                        //     for (var val in this.groupMedical.kids) {
-                        //         this.groupMedical.kids[kidCount].kidName =  this.groupMedical.kids[val].kidName;
-                        //         this.groupMedical.kids[kidCount].kidDateOfBirth =  this.groupMedical.kids[val].kidDateOfBirth;
-                        //         this.groupMedical.kids[kidCount].kidgender =  this.groupMedical.kids[val].kidgender;
-                        //         kidCount = kidCount + 1;
-                        //       }
-                        // }
                         this.editing = true;
                     }
                     else
@@ -192,6 +181,10 @@ export class GroupMedicalComponent
                     let kidarray = this.groupMedical.kids;
                     for(let kidElement of kidarray) {
                         this.groupMedical.kids=[new Kid()];
+                        if(this.editing)
+                        {
+                            this.groupMedical.kids[0].kidId = kidElement.kidId;
+                        }
                        this.groupMedical.kids[0].kidName = kidElement.kidName;
                        this.groupMedical.kids[0].kidDateOfBirth = kidElement.kidDateOfBirth;
                        this.groupMedical.kids[0].kidGender = kidElement.kidGender;
@@ -199,6 +192,7 @@ export class GroupMedicalComponent
                      }
                   
                 }
+                
             }
             console.log(this.groupMedical);
             this.model.saveGroupMedical(this.groupMedical);
@@ -218,5 +212,8 @@ export class GroupMedicalComponent
     getPersonalDetailsGM()
     {
             this.router.navigateByUrl("/form/previousEmployers");
+    }
+    async delay(ms: number) {
+        await new Promise<void>(resolve => setTimeout(()=>resolve(), ms)).then(()=>console.log("fired"));
     }
 }

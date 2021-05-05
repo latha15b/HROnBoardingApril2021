@@ -31,6 +31,7 @@ export class UploadDocumentsComponent
     editing: boolean = false;
     personalEmployeeId: number = 0;
     fileToUpload: File = null;  
+    totalDocumentCount:boolean = false;
     //file:any;
     fileName: string;
     file: File;
@@ -77,6 +78,7 @@ export class UploadDocumentsComponent
                   {
                         this.editing= true;
                         this.uploadDocumentsList = data;
+                        this.totalDocumentCount = true;
                         console.log(this.uploadDocumentsList);
                         this.dataSource = new MatTableDataSource<any>(this.uploadDocumentsList);
                         this.displayTable = true;
@@ -136,11 +138,8 @@ export class UploadDocumentsComponent
         }
         submitForm(form: NgForm)
         {
-            if(form.valid)
-            {
                 this.model.submitUploadDocuments(this.personalEmployeeId);
-                this.router.navigateByUrl("/form/summaryDetails");
-            }
+                this.router.navigateByUrl("/form/summaryPersonalDetails");
         }
        
         getOtherDetailsUD()

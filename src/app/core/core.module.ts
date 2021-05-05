@@ -26,7 +26,7 @@ import { OtherProfessionalDetailsComponent } from './otherProfessionalDetails.co
 import { UploadDocumentsComponent } from './uploadDocuments.component';
 import { SummaryDetailsComponent } from './summaryDetails.component';
 import { NumberOnlyDirective } from "../shared/directive/number-only-directive"
-
+import { SummaryPersonalDetailsComponent } from "./summaryPersonalDetails.component";
 
 @NgModule({
     imports: [ BrowserModule,
@@ -45,8 +45,8 @@ import { NumberOnlyDirective } from "../shared/directive/number-only-directive"
                MatTableModule
                
             ],
-    declarations: [FormPersonalDetailsComponent, HomepageComponent, EducationDetailsComponent,EducationCertificationComponent,PreviousEmployerComponent,GroupMedicalComponent,OtherDetailsComponent,OtherProfessionalDetailsComponent,UploadDocumentsComponent,SummaryDetailsComponent,NumberOnlyDirective],
-    exports: [ModelModule, FormPersonalDetailsComponent, HomepageComponent, EducationDetailsComponent,EducationCertificationComponent,PreviousEmployerComponent,GroupMedicalComponent,OtherDetailsComponent,OtherProfessionalDetailsComponent,UploadDocumentsComponent,SummaryDetailsComponent,NumberOnlyDirective],
+    declarations: [FormPersonalDetailsComponent, HomepageComponent, EducationDetailsComponent,EducationCertificationComponent,PreviousEmployerComponent,GroupMedicalComponent,OtherDetailsComponent,OtherProfessionalDetailsComponent,UploadDocumentsComponent,SummaryDetailsComponent,NumberOnlyDirective,SummaryPersonalDetailsComponent],
+    exports: [ModelModule, FormPersonalDetailsComponent, HomepageComponent, EducationDetailsComponent,EducationCertificationComponent,PreviousEmployerComponent,GroupMedicalComponent,OtherDetailsComponent,OtherProfessionalDetailsComponent,UploadDocumentsComponent,SummaryDetailsComponent,NumberOnlyDirective,SummaryPersonalDetailsComponent],
     providers: [{ provide: SHARED_STATE, useValue: new Subject<SharedState>() }]
 })
 

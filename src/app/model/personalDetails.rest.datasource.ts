@@ -28,11 +28,16 @@ export class PersonalDetailsRestDataSource
         console.log(this.url+"/GetAllStateDetails/");
         return this.sendRequestState<State[]>("GET",this.url+"/GetAllStateDetails/")
     }
-
-    getCities(stateID: number): Observable<City[]>
+   
+    getCitiesById(stateID: number): Observable<City[]>
     {
         console.log(this.url+"/GetAllCityDetailsById/"+stateID);
         return this.sendRequestCity<City[]>("GET",this.url+"/GetAllCityDetailsById/"+stateID);
+    }
+    getCities(): Observable<City[]>
+    {
+        console.log(this.url+"/GetAllCityDetails");
+        return this.sendRequestCity<City[]>("GET",this.url+"/GetAllCityDetails");
     }
     getCitiesByStateName(stateName: string): Observable<City[]>
     {
