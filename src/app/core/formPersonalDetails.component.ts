@@ -38,7 +38,7 @@ export class FormPersonalDetailsComponent
     citiesPA1: City[] = new Array<City>();
     gender: Gender[] = new Array<Gender>();
     bloodGroup: Bloodgroup[] = new Array<Bloodgroup>();
-    personalEmployeeId: number =21;
+    personalEmployeeId: number = 1;
     editing: boolean = false;
     href: string = "";
     isSummaryPage: boolean = false;
@@ -95,7 +95,6 @@ export class FormPersonalDetailsComponent
         {
             this.isSummaryPage = false;
         }
-        sessionStorage.setItem("PersonalDetailsEmployeeId","21");
         
         if(!this.editing)
         {
@@ -150,6 +149,7 @@ export class FormPersonalDetailsComponent
     changePermanentAddressState(state: string)
     {
         this.citiesPA = [];
+        this.citiesPA = this.cities;
         this.citiesPA = this.model.getCityDetailByStateId(Number(state));
     }
     changeCurrentState(stateCurrent: string)
@@ -183,7 +183,7 @@ export class FormPersonalDetailsComponent
                     {
                         this.personalDetails = p
                         this.router.navigateByUrl("/form/educationdetails");
-                        sessionStorage.setItem("PersonalDetailsEmployeeId","21")
+                        sessionStorage.setItem("PersonalDetailsEmployeeId",p.employeeId.toString());
 
                     });
             }
@@ -195,6 +195,7 @@ export class FormPersonalDetailsComponent
         if(event.checked)
         {
             this.citiesPA = [];
+            this.changePermanentAddressState(this.personalDetails.currentStateId);
             this.personalDetails.permanentAddress= this.personalDetails.currentAddress;
             this.personalDetails.permanentAddressStateId= this.personalDetails.currentStateId;
             this.personalDetails.permanentAddressCityId= this.personalDetails.currentCityId;

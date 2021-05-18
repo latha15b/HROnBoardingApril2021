@@ -109,6 +109,10 @@ export class UploadDocumentsComponent
             this.model.saveUploadDocuments(this.file,this.uploadDocuments)
             .subscribe(data => {
                   this.uploadDocumentsList = data;
+                  if(data.length>=1)
+                  {
+                    this.totalDocumentCount = true;
+                  }
                   console.log(this.uploadDocumentsList);
                     this.dataSource = new MatTableDataSource<any>(this.uploadDocumentsList);
                     this.displayTable = true;

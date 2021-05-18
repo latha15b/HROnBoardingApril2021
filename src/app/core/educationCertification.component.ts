@@ -5,6 +5,8 @@ import { Observable, Observer } from 'rxjs';
 import { timestamp } from "rxjs/operators";
 import { EducationCertification } from '../model/educationcertification.model';
 import { EducationCertificationModel } from '../model/educationcertification.repository.model';
+import { EducationQualificationModel } from "../model/educationQualification.repository.model";
+import { EducationDetailsComponent } from "./educationDetails.component";
 import { SharedState, SHARED_STATE } from './sharedState.model';
 
 @Component({
@@ -28,6 +30,7 @@ export class EducationCertificationComponent
     isSummaryPage: boolean = false;
     controlsEC = { controlDetailsEC: [] };
     constructor(private model: EducationCertificationModel,private router: Router,
+        private modelEdu: EducationQualificationModel,
         @Inject(SHARED_STATE) public stateEvents: Observable<SharedState>,
         @Inject(SHARED_STATE) public observer: Observer<SharedState>)
     {
@@ -39,7 +42,7 @@ export class EducationCertificationComponent
     {
         this.href = this.router.url;
         console.log("URL " + this.href);
-        this.editing = true;
+        //this.editing = true;
        
         this.controlsEC.controlDetailsEC = [this.controlDetailsEC];
         if(!this.editing)
@@ -50,6 +53,13 @@ export class EducationCertificationComponent
         if(sessionStorage.getItem("PersonalDetailsEmployeeId"))
         {
             this.personalEmployeeId = Number(sessionStorage.getItem("PersonalDetailsEmployeeId"));
+            this.modelEdu.getEducationQualificationByEmpId(this.personalEmployeeId).subscribe
+                (data => {
+                    if(data.length >= 1)
+                    {
+                        this.editing = true;
+                    }
+                });
             this.model.getEducationCertificationByEmployeeId(this.personalEmployeeId).subscribe
                 (dataEC => {
                     if(dataEC.length >= 1)

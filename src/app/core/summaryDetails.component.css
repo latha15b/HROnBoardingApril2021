@@ -1,3 +1,13 @@
 .example-spacer {
     flex: 1 1 auto;
 }  
+.fontSubmitMsg {
+    font-size: initial;
+    font-weight: bold;
+    color: indigo;
+}
+.fontThankMsg {
+    font-size: initial;
+    color: indigo;
+    font-style: italic;
+}
